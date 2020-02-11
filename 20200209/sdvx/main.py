@@ -28,9 +28,13 @@ params['captcha'] = captcha
 
 res = session.post(LOGIN_URL, data=params)
 
+test = session.get(resrv_url)
+test.raise_for_status()
+
 response = session.get(MAIN_URL, headers=header)
 response.raise_for_status()
 soup = BeautifulSoup(response.text, "html.parser")
+print(soup)
 pages = soup.find("a", {"id": "id_paseli_inquiry"})
 print(pages)
 # for page in pages:
