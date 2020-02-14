@@ -15,7 +15,7 @@ def get_last_page():
 def extract_job(html):
     title = html.find("div", {"class": "grid"}).find_next_sibling().find(
         "div", {"class": "fl1"}).find("h2", {"class": "fs-body3"}).find("a")["title"]
-    print(title)
+    return title
 
 
 def extract_jobs(last_page):
