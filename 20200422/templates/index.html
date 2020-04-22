@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+  <header>
+    <h1>Noamd News</h1>
+    <div>
+      Order by:
+      {% if order_by == "new" %}
+        <a href="/?order_by=Popular">Popular</a>
+        |
+        <strong>New</strong>
+      {% else %}
+        <strong>Popular</strong>
+        |
+        <a href="/?order_by=New">New</a>
+      {% endif %}  
+    </div>
+  </header>  
+  <main>
+    {% for new in news%}
+    <div>
+      <a href={{"/" + new.objectID}}>
+        <h3>{{new.title}}</h3>
+      </a>
+      (
+      <a href={{new.url}} target="_blank">{{new.url}}</a>
+      )
+    </div>
+    <div>
+      {{new.points}} | By:{{new.author}} | {{new.num_comments}}comments
+    </div>
+    {% endfor %}
+  </main>
+</body>
+
+</html>
